@@ -1,0 +1,2 @@
+# lohtu
+Ohjelmistotuotantotokurssin projekti
