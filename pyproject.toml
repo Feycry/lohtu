@@ -1,0 +1,31 @@
+[project]
+name = "miniprojekti-boilerplate"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Matti Luukkainen",email = "mluukkai@iki.fi"}
+]
+license = {text = "MIT"}
+requires-python = "^3.12"
+dependencies = [
+    "flask (>=3.1.2,<4.0.0)",
+    "flask-sqlalchemy (>=3.1.1,<4.0.0)",
+    "python-dotenv (>=1.2.1,<2.0.0)",
+    "getenv (>=0.2.0,<0.3.0)",
+    "psycopg2-binary (>=2.9.11,<3.0.0)",
+    "requests (>=2.32.5,<3.0.0)"
+]
+
+[dependency-groups]
+dev = [
+    "robotframework (>=7.3.2,<8.0.0)",
+    "robotframework-seleniumlibrary (>=6.8.0,<7.0.0)",
+    "pytest (>=8.4.2,<9.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

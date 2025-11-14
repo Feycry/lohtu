@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Todo app
+{% endblock %}
+
+{% block body %}
+
+<h2>Todo app</h2>
+
+<div>
+  things still unfinished: {{ unfinished }}
+</div>
+
+<ul>
+  {% for todo in todos %}
+    <li style="display: flex">
+      <div>
+        {{ todo }} 
+      </div>
+      {% if not todo.done %}
+        <form action="/toggle_todo/{{ todo.id }}" method="post" style="margin-left: 10px;">
+          <button type="submit">mark as done</button>
+        </form>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+<div>
+  <a href="/new_todo">Create new todo</a>
+</div>
+
+{% endblock %}
