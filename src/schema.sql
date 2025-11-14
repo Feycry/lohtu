@@ -1,8 +1,8 @@
-CREATE TABLE references (
+CREATE TABLE refs (
   id SERIAL PRIMARY KEY, 
   content TEXT NOT NULL,
   done BOOLEAN DEFAULT FALSE
-)
+);
 
 CREATE TABLE sources (
     id SERIAL PRIMARY KEY,
