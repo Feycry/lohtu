@@ -4,6 +4,8 @@ CREATE TABLE refs (
     title TEXT,
     booktitle TEXT,
     year INT,
+    url TEXT,
+    doi TEXT,
     editor TEXT,
     volume INT,
     number INT,
@@ -12,9 +14,7 @@ CREATE TABLE refs (
     address TEXT,
     month TEXT,
     organization TEXT,
-    publisher TEXT,
-    url TEXT,
-    doi TEXT
+    publisher TEXT
 );
 
 CREATE TABLE refType (
