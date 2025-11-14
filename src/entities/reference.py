@@ -1,4 +1,4 @@
-class Todo:
+class Reference:
     def __init__(self, id, content, done):
         self.id = id
         self.content = content

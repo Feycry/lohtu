@@ -1,14 +1,14 @@
 {% extends "layout.html" %}
 
 {% block title %}
-Create a new todo
+Create a new reference
 {% endblock %}
 
 {% block body %}
 
-<h2>Create a new todo</h2>
+<h2>Create a new reference</h2>
 
-<form action="/create_todo" method="post">
+<form action="/create_reference" method="post">
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <ul>
@@ -18,7 +18,7 @@ Create a new todo
       </ul>
     {% endif %}
   {% endwith %}
-  <label for="content">Todo:</label>
+  <label for="content">Reference:</label>
   <input type="text" name="content">
   <br>
   <button type="submit">
