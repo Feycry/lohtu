@@ -8,7 +8,7 @@ def get_references():
     references = result.fetchall()
     return [Reference(reference[0], title=reference[1]) for reference in references] 
 
-def create_reference(content):
-    sql = text('INSERT INTO refs (content) VALUES (:content)')
-    db.session.execute(sql, { "content": content })
+def create_reference(title):
+    sql = text('INSERT INTO refs (title) VALUES (:title)')
+    db.session.execute(sql, { "title": title })
     db.session.commit()

@@ -7,8 +7,8 @@ from util import validate_reference
 @app.route("/")
 def index():
     references = get_references()
-    unfinished = len([reference for reference in references if not reference.done])
-    return render_template("index.html", references=references, unfinished=unfinished) 
+    #unfinished = len([reference for reference in references if not reference.done])
+    return render_template("index.html", references=references) 
 
 @app.route("/new_reference")
 def new():
@@ -16,11 +16,11 @@ def new():
 
 @app.route("/create_reference", methods=["POST"])
 def reference_creation():
-    content = request.form.get("content")
+    title = request.form.get("title")
 
     try:
-        validate_reference(content)
-        create_reference(content)
+        validate_reference(title)
+        create_reference(title)
         return redirect("/")
     except Exception as error:
         flash(str(error))
