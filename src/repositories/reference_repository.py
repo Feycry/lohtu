@@ -8,11 +8,6 @@ def get_references():
     references = result.fetchall()
     return [Reference(reference[0], reference[1], reference[2]) for reference in references] 
 
-def set_done(reference_id):
-    sql = text('UPDATE refs SET done = TRUE WHERE id = :id')
-    db.session.execute(sql, { "id": reference_id })
-    db.session.commit()
-
 def create_reference(content):
     sql = text('INSERT INTO refs (content) VALUES (:content)')
     db.session.execute(sql, { "content": content })

@@ -1,6 +1,6 @@
 from flask import redirect, render_template, request, jsonify, flash
 from db_helper import reset_db
-from repositories.reference_repository import get_references, create_reference, set_done
+from repositories.reference_repository import get_references, create_reference
 from config import app, test_env
 from util import validate_reference
 
@@ -25,11 +25,6 @@ def reference_creation():
     except Exception as error:
         flash(str(error))
         return  redirect("/new_reference")
-
-@app.route("/toggle_reference/<reference_id>", methods=["POST"])
-def toggle_reference(reference_id):
-    set_done(reference_id)
-    return redirect("/")
 
 # testausta varten oleva reitti
 if test_env:

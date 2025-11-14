@@ -18,11 +18,6 @@ Reference app
       <div>
         {{ reference }} 
       </div>
-      {% if not reference.done %}
-        <form action="/toggle_reference/{{ reference.id }}" method="post" style="margin-left: 10px;">
-          <button type="submit">mark as done</button>
-        </form>
-      {% endif %}
     </li>
   {% endfor %}
 </ul>
