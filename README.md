@@ -7,7 +7,7 @@ Ohjelmistotuotantotokurssin projekti
 - Code is in English and follows agreed coding standards
 
 # Backlog
-https://docs.google.com/spreadsheets/d/1CTdGofwCAQt9wFUSohZNbdltgjcS-296MohrMO4q4kg/edit?gid=1#gid=1
+https://docs.google.com/spreadsheets/d/1CTdGofwCAQt9wFUSohZNbdltgjcS-296MohrMO4q4kg/edit?usp=sharing
 
 # Start manual
 1. Install dependencies<br>
