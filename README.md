@@ -10,13 +10,13 @@ Ohjelmistotuotantotokurssin projekti
 https://docs.google.com/spreadsheets/d/1CTdGofwCAQt9wFUSohZNbdltgjcS-296MohrMO4q4kg/edit?gid=1#gid=1
 
 # Start manual
-1. Install dependencies
+1. Install dependencies<br>
    poetry install
-2. Create .env file and copy the text below. Replace secret key
-   DATABASE_URL=postgresql://...
-   TEST_ENV=true
-   SECRET_KEY=...
-3. Activate the virtual environment
-   eval $(poetry env activate)
-4. Start the application
-   python3 src/index.py
+2. Create .env file and copy the text below. Replace secret key<br>
+   DATABASE_URL=postgresql://...<br>
+   TEST_ENV=true<br>
+   SECRET_KEY=...<br>
+3. Activate the virtual environment<br>
+   eval $(poetry env activate)<br>
+4. Start the application<br>
+   python3 src/index.py<br>
