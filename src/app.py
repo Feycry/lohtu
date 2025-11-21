@@ -40,13 +40,14 @@ def new():
 @app.route("/create_reference", methods=["POST"])
 def reference_creation():
     """Creates a new reference with the provided form data."""
-    # Required fields
+    # Get reference type
+    reference_type = request.form.get("reference_type")
+    
+    # Get all possible fields
     author = request.form.get("author")
     title = request.form.get("title")
     booktitle = request.form.get("booktitle")
     year = request.form.get("year")
-    
-    # Optional fields
     url = request.form.get("url")
     doi = request.form.get("doi")
     editor = request.form.get("editor")
@@ -58,10 +59,18 @@ def reference_creation():
     month = request.form.get("month")
     organization = request.form.get("organization")
     publisher = request.form.get("publisher")
+    edition = request.form.get("edition")
+    howpublished = request.form.get("howpublished")
+    institution = request.form.get("institution")
+    journal = request.form.get("journal")
+    note = request.form.get("note")
+    school = request.form.get("school")
+    type_field = request.form.get("type")
 
     try:
         validate_reference(title)
         create_reference(
+            reference_type=reference_type,
             author=author,
             title=title,
             booktitle=booktitle,
@@ -76,7 +85,14 @@ def reference_creation():
             address=address,
             month=month,
             organization=organization,
-            publisher=publisher
+            publisher=publisher,
+            edition=edition,
+            howpublished=howpublished,
+            institution=institution,
+            journal=journal,
+            note=note,
+            school=school,
+            type=type_field
         )
         return redirect("/")
     except Exception as error:
