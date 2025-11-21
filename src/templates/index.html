@@ -10,10 +10,18 @@ Reference app
 
 <ul>
   {% for reference in references %}
+    <script>
+        function showConfirmation(event) {
+            event.preventDefault();
+
+            if (confirm("Confrim deletion of reference")) {
+                event.target.submit();}
+            }
+    </script>
     <li style="display: flex">
       <div>
         {{ reference }} 
-        <form action="/delete_ref" method="post">
+        <form action="/delete_ref" method="post" onsubmit="showConfirmation(event)" >
           <input type="hidden" name="reference_id" value="{{ reference.id }}">
           <button type="submit">Delete reference</button>
         </form>
