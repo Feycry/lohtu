@@ -8,3 +8,4 @@ poetry.lock
 log.html
 report.html
 output.xml
+*.log
