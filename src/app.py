@@ -1,6 +1,6 @@
 from flask import redirect, render_template, request, jsonify, flash
 from db_helper import reset_db, delete_reference
-from repositories.reference_repository import get_references, create_reference, get_reference_type_required_fields
+from repositories.reference_repository import get_references, create_reference, get_reference_type_required_fields, get_reference, update_reference
 from config import app, test_env
 from util import validate_reference
 
@@ -99,13 +99,113 @@ def reference_creation():
         flash(str(error))
         return  redirect("/new_reference")
 
-@app.route("/edit")
+@app.route("/edit_reference")
 def edit():
-    return render_template("edit_reference.html")
+    """Renders the form for editing an existing reference."""
+    reference_id = request.args.get("reference_id")
+    
+    if not reference_id:
+        flash("Reference ID is required for editing.")
+        return redirect("/")
+    
+    reference = get_reference(reference_id)
+    
+    if not reference:
+        flash("Reference not found.")
+        return redirect("/")
+    
+    # Get required fields for this reference type
+    required_fields = get_reference_type_required_fields(reference.ref_type)
+    
+    # All possible fields in the form
+    all_fields = [
+        'author', 'title', 'journal', 'booktitle', 'year', 'publisher', 
+        'school', 'institution', 'url', 'doi', 'editor', 'volume', 
+        'number', 'series', 'pages', 'address', 'month', 'organization',
+        'edition', 'howpublished', 'note', 'type'
+    ]
+    
+    # Separate required and optional fields
+    optional_fields = [field for field in all_fields if field not in required_fields]
+    
+    return render_template("edit_reference.html",
+                         reference=reference,
+                         required_fields=required_fields,
+                         optional_fields=optional_fields)
 
-@app.route("/edit_reference", methods=["POST"])
+@app.route("/update_reference", methods=["POST"])
 def edit_reference():
-    pass
+    """Updates an existing reference with the provided form data."""
+    reference_id = request.form.get("reference_id")
+    
+    if not reference_id:
+        flash("Reference ID is required for editing.")
+        return redirect("/")
+    
+    # Get reference type (not editable, so get from existing reference)
+    reference = get_reference(reference_id)
+    if not reference:
+        flash("Reference not found.")
+        return redirect("/")
+    
+    reference_type = reference.ref_type
+    
+    # Get all possible fields
+    author = request.form.get("author")
+    title = request.form.get("title")
+    booktitle = request.form.get("booktitle")
+    year = request.form.get("year")
+    url = request.form.get("url")
+    doi = request.form.get("doi")
+    editor = request.form.get("editor")
+    volume = request.form.get("volume")
+    number = request.form.get("number")
+    series = request.form.get("series")
+    pages = request.form.get("pages")
+    address = request.form.get("address")
+    month = request.form.get("month")
+    organization = request.form.get("organization")
+    publisher = request.form.get("publisher")
+    edition = request.form.get("edition")
+    howpublished = request.form.get("howpublished")
+    institution = request.form.get("institution")
+    journal = request.form.get("journal")
+    note = request.form.get("note")
+    school = request.form.get("school")
+    type_field = request.form.get("type")
+
+    try:
+        validate_reference(title)
+        update_reference(
+            reference_id=reference_id,
+            reference_type=reference_type,
+            author=author,
+            title=title,
+            booktitle=booktitle,
+            year=year,
+            url=url,
+            doi=doi,
+            editor=editor,
+            volume=volume,
+            number=number,
+            series=series,
+            pages=pages,
+            address=address,
+            month=month,
+            organization=organization,
+            publisher=publisher,
+            edition=edition,
+            howpublished=howpublished,
+            institution=institution,
+            journal=journal,
+            note=note,
+            school=school,
+            type=type_field
+        )
+        return redirect("/")
+    except Exception as error:
+        flash(str(error))
+        return redirect(f"/edit_reference?reference_id={reference_id}")
 
 # testausta varten oleva reitti
 if test_env:

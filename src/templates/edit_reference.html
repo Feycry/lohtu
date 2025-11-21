@@ -6,9 +6,44 @@ Edit reference
 
 {% block body %}
 
-<h2>Create a new reference</h2>
-<p>
-    Tänne tulee viitteen muokkaus :D
-</p>
+<h2>Edit reference</h2>
+
+<p><strong>Reference Type:</strong> @{{ reference.ref_type }} (not editable)</p>
+
+<form action="/update_reference" method="post">
+  <input type="hidden" name="reference_id" value="{{ reference.id }}">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  
+  {% if required_fields %}
+  <h3>Required Fields</h3>
+  {% for field in required_fields %}
+  <label for="{{ field }}">{{ field.capitalize() }}:</label>
+  <input type="text" name="{{ field }}" id="{{ field }}" value="{{ reference[field] or '' }}" required>
+  <br>
+  {% endfor %}
+  {% endif %}
+  
+  {% if optional_fields %}
+  <h3>Optional Fields</h3>
+  {% for field in optional_fields %}
+  <label for="{{ field }}">{{ field.capitalize() }}:</label>
+  <input type="text" name="{{ field }}" id="{{ field }}" value="{{ reference[field] or '' }}">
+  <br>
+  {% endfor %}
+  {% endif %}
+  
+  <button type="submit">
+    Update
+  </button>
+  <a href="/">Cancel</a>
+</form>
 
 {% endblock %}

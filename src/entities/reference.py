@@ -30,6 +30,10 @@ class Reference:
         self.school = school
         self.type = type
 
+    def __getitem__(self, key):
+        """Allow dictionary-style access to attributes."""
+        return getattr(self, key, None)
+
     def __str__(self):
         parts = []
         if self.ref_type:
