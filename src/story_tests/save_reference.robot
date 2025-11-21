@@ -42,3 +42,17 @@ Saving a reference with too short title
     Title Should Be  Create a new reference
     Page Should Contain  Reference title length must be greater than 1
 
+Saving a reference after editing works
+    Go To  ${HOME_URL}
+    Select From List By Label    name:reference_type    @inproceedings
+    Click Button  Create new reference
+    Input Text  name:author     Test Author
+    Input Text  name:title      a
+    Input Text  name:booktitle  Test Book
+    Input Text  name:year       2024
+    Click Button  Create
+    Click Button  Edit reference
+    Title Should Be  Edit reference
+    Input Text  name:year  2025
+    Click Button  Update
+    Page Should Contain  Year: 2025
