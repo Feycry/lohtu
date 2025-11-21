@@ -1,6 +1,6 @@
 from flask import redirect, render_template, request, jsonify, flash
 from db_helper import reset_db, delete_reference
-from repositories.reference_repository import get_references, create_reference
+from repositories.reference_repository import get_references, create_reference, get_reference_type_required_fields
 from config import app, test_env
 from util import validate_reference
 
@@ -14,7 +14,28 @@ def index():
 @app.route("/new_reference")
 def new():
     """Renders the form for creating a new reference."""
-    return render_template("new_reference.html")
+    reference_type = request.args.get("reference_type", "")
+    
+    # Get required fields for this reference type
+    required_fields = []
+    if reference_type:
+        required_fields = get_reference_type_required_fields(reference_type)
+    
+    # All possible fields in the form
+    all_fields = [
+        'author', 'title', 'journal', 'booktitle', 'year', 'publisher', 
+        'school', 'institution', 'url', 'doi', 'editor', 'volume', 
+        'number', 'series', 'pages', 'address', 'month', 'organization',
+        'edition', 'howpublished', 'note', 'type'
+    ]
+    
+    # Separate required and optional fields
+    optional_fields = [field for field in all_fields if field not in required_fields]
+    
+    return render_template("new_reference.html", 
+                         reference_type=reference_type,
+                         required_fields=required_fields,
+                         optional_fields=optional_fields)
 
 @app.route("/create_reference", methods=["POST"])
 def reference_creation():

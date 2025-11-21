@@ -52,8 +52,24 @@ Reference app
     <option value="unpublished">@unpublished</option>
   </select>
 </p>
-<div>
-  <a href="/new_reference">Create new reference</a>
-</div>
+<form action="/new_reference" method="get" onsubmit="return validateReferenceType()">
+  <input type="hidden" name="reference_type" id="selected_reference_type">
+  <button type="submit">Create new reference</button>
+</form>
+
+<script>
+  function validateReferenceType() {
+    const select = document.getElementById('reference_type');
+    const selectedValue = select.value;
+    
+    if (!selectedValue) {
+      alert('Please select a reference type before creating a new reference.');
+      return false;
+    }
+    
+    document.getElementById('selected_reference_type').value = selectedValue;
+    return true;
+  }
+</script>
 
 {% endblock %}

@@ -3,6 +3,13 @@ from sqlalchemy import text
 
 from entities.reference import Reference
 
+def get_reference_type_required_fields(reference_type):
+    """Get the required fields for a specific reference type."""
+    sql = text('SELECT required_fields FROM refType WHERE name = :reference_type')
+    result = db.session.execute(sql, {"reference_type": reference_type})
+    row = result.fetchone()
+    return row[0] if row else []
+
 def get_references():
     result = db.session.execute(text('''SELECT id, author, title, booktitle, year, url, doi, 
                                         editor, volume, number, series, pages, address, 
