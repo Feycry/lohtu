@@ -13,6 +13,10 @@ Reference app
     <li style="display: flex">
       <div>
         {{ reference }} 
+        <form action="/delete_ref" method="post">
+          <input type="hidden" name="reference_id" value="{{ reference.id }}">
+          <button type="submit">Delete reference</button>
+        </form>
       </div>
     </li>
   {% endfor %}

@@ -44,6 +44,13 @@ def setup_db():
   db.session.execute(sql)
   db.session.commit()
 
+def delete_reference(reference_id):
+    """Deletes a reference by its ID."""
+    sql = text("DELETE FROM refs WHERE id = :reference_id")
+    result = db.session.execute(sql, {"reference_id": reference_id})
+    db.session.commit()
+    return result.rowcount > 0
+
 if __name__ == "__main__":
     with app.app_context():
       setup_db()

@@ -2,7 +2,6 @@
 Resource  resource.robot
 Suite Setup      Open And Configure Browser
 Suite Teardown   Close Browser
-Test Setup       Reset References
 
 *** Test Cases ***
 Saving a reference shows on index
@@ -30,3 +29,10 @@ Saving a reference with too short title
     Click Button  Create
     Title Should Be  Create a new reference
     Page Should Contain  Reference title length must be greater than 1
+
+# Page should only contain one reference before this test
+Deleting a reference removes it from index
+    Go To  ${HOME_URL}
+    Title Should Be  Reference app
+    Click Button  Delete reference
+    Page Should Not Contain  Author

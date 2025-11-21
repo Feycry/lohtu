@@ -4,4 +4,7 @@ __pycache__/
 .pytest_cache/
 htmlcov/
 poetry.lock
-.png
+*.png
+log.html
+report.html
+output.xml
