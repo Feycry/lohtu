@@ -21,7 +21,25 @@ Reference app
     </li>
   {% endfor %}
 </ul>
-
+<p>
+  <label for="reference_type">Viitetyyppi:</label><br />
+  <select name="reference_type" id="reference_type" required>
+    <option value="">(valitse)</option>
+    <option value="article">@article</option>
+    <option value="book">@book</option>
+    <option value="booklet">@booklet</option>
+    <option value="conference">@conference</option>
+    <option value="inbook">@inbook</option>
+    <option value="incollection">@incollection</option>
+    <option value="inproceedings">@inproceedings</option>
+    <option value="manual">@manual</option>
+    <option value="mastersthesis">@mastersthesis</option>
+    <option value="phdthesis">@phdthesis</option>
+    <option value="proceedings">@proceedings</option>
+    <option value="techreport">@techreport</option>
+    <option value="unpublished">@unpublished</option>
+  </select>
+</p>
 <div>
   <a href="/new_reference">Create new reference</a>
 </div>
