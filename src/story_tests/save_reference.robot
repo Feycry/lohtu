@@ -11,7 +11,6 @@ Saving a reference shows on index
     Go To  ${HOME_URL}
     Title Should Be  Reference app
     Select From List By Label    name:reference_type    @inproceedings
-    Execute JavaScript    document.getElementById('selected_reference_type').value = document.getElementById('reference_type').value
     Click Button  Create new reference
     Input Text  name:author     Test Author
     Input Text  name:title      Test Title
@@ -34,7 +33,6 @@ Saving a reference with too short title
     Go To  ${HOME_URL}
     Title Should Be  Reference app
     Select From List By Label    name:reference_type    @inproceedings
-    Execute JavaScript    document.getElementById('selected_reference_type').value = document.getElementById('reference_type').value
     Click Button  Create new reference
     Input Text  name:author     Test Author
     Input Text  name:title      a
