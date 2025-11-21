@@ -25,6 +25,10 @@ Reference app
           <input type="hidden" name="reference_id" value="{{ reference.id }}">
           <button type="submit">Delete reference</button>
         </form>
+        <form action="/edit" method="get">
+        <input type="hidden" name="reference_id" value="{{ reference.id }}">
+        <button type="submit">Edit reference</button>
+        </form>
       </div>
     </li>
   {% endfor %}

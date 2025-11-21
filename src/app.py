@@ -62,6 +62,14 @@ def reference_creation():
         flash(str(error))
         return  redirect("/new_reference")
 
+@app.route("/edit")
+def edit():
+    return render_template("edit_reference.html")
+
+@app.route("/edit_reference", methods=["POST"])
+def edit_reference():
+    pass
+
 # testausta varten oleva reitti
 if test_env:
     @app.route("/reset_db")
