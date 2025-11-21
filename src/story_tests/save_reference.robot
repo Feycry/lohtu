@@ -4,6 +4,9 @@ Suite Setup      Open And Configure Browser
 Suite Teardown   Close Browser
 
 *** Test Cases ***
+Reset database
+    Reset References
+
 Saving a reference shows on index
     Go To  ${HOME_URL}
     Title Should Be  Reference app
@@ -16,6 +19,13 @@ Saving a reference shows on index
     Title Should Be  Reference app
     Page Should Contain  Test Title
     Page Should Contain  Test Author
+
+Deleting a reference removes it from index
+    Go To  ${HOME_URL}
+    Title Should Be  Reference app
+    Click Button  Delete reference
+    Alert Should Be Present  Confrim deletion of reference
+    Page Should Not Contain  Author
 
 
 Saving a reference with too short title
@@ -30,9 +40,3 @@ Saving a reference with too short title
     Title Should Be  Create a new reference
     Page Should Contain  Reference title length must be greater than 1
 
-# Page should only contain one reference before this test
-Deleting a reference removes it from index
-    Go To  ${HOME_URL}
-    Title Should Be  Reference app
-    Click Button  Delete reference
-    Page Should Not Contain  Author
