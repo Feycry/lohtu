@@ -58,6 +58,7 @@ Saving a reference after editing works
     Page Should Contain  Year: 2025
 
 Canceling changes works
+    Reset References
     Go To  ${HOME_URL}
     Select From List By Label    name:reference_type    @inproceedings
     Click Button  Create new reference
