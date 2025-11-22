@@ -35,7 +35,7 @@ Saving a reference with too short title
     Select From List By Label    name:reference_type    @inproceedings
     Click Button  Create new reference
     Input Text  name:author     Test Author
-    Input Text  name:title      a
+    Input Text  name:title      Test Title
     Input Text  name:booktitle  Test Book
     Input Text  name:year       2024
     Click Button  Create
