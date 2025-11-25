@@ -8,6 +8,7 @@ ${HOME_URL}   http://${SERVER}
 ${RESET_URL}  http://${SERVER}/reset_db
 ${BROWSER}    chrome
 ${HEADLESS}   false
+${long_title}  pitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitka
 
 *** Keywords ***
 Open And Configure Browser

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.12.3 on linux)" generated="2025-11-19T00:53:26.207277" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.12.3 on linux)" generated="2025-11-26T00:45:01.686633" rpa="false" schemaversion="5">
 <suite id="s1" name="Save Reference" source="/home/mojomojo/lohtu/src/story_tests/save_reference.robot">
 <kw name="Open And Configure Browser" owner="resource" type="SETUP">
 <if>
 <branch type="IF" condition="$BROWSER == 'chrome'">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-11-19T00:53:26.354626" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7d3197cfd7f0&gt;</msg>
+<msg time="2025-11-26T00:45:01.834551" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7bf8b86fd550&gt;</msg>
 <var>${options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-11-19T00:53:26.354248" elapsed="0.000430"/>
+<status status="PASS" start="2025-11-26T00:45:01.834132" elapsed="0.000482"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
 <arg>add_argument</arg>
 <arg>--incognito</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-11-19T00:53:26.354843" elapsed="0.000225"/>
+<status status="PASS" start="2025-11-26T00:45:01.834799" elapsed="0.000190"/>
 </kw>
-<status status="PASS" start="2025-11-19T00:53:26.353539" elapsed="0.001643"/>
+<status status="PASS" start="2025-11-26T00:45:01.833468" elapsed="0.001585"/>
 </branch>
 <branch type="ELSE IF" condition="$BROWSER == 'firefox'">
 <kw name="Evaluate" owner="BuiltIn">
@@ -27,226 +27,142 @@
 <arg>sys.modules['selenium.webdriver'].FirefoxOptions()</arg>
 <arg>sys</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-11-19T00:53:26.355654" elapsed="0.000043"/>
+<status status="NOT RUN" start="2025-11-26T00:45:01.835242" elapsed="0.000029"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
 <arg>add_argument</arg>
 <arg>--private-window</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="NOT RUN" start="2025-11-19T00:53:26.355834" elapsed="0.000039"/>
+<status status="NOT RUN" start="2025-11-26T00:45:01.835372" elapsed="0.000026"/>
 </kw>
-<status status="NOT RUN" start="2025-11-19T00:53:26.355426" elapsed="0.000577"/>
+<status status="NOT RUN" start="2025-11-26T00:45:01.835116" elapsed="0.000326"/>
 </branch>
-<status status="PASS" start="2025-11-19T00:53:26.353494" elapsed="0.002595"/>
+<status status="PASS" start="2025-11-26T00:45:01.833433" elapsed="0.002050"/>
 </if>
 <if>
 <branch type="IF" condition="$HEADLESS == 'true'">
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>0.01 seconds</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
-<status status="NOT RUN" start="2025-11-19T00:53:26.356456" elapsed="0.000038"/>
+<status status="NOT RUN" start="2025-11-26T00:45:01.835820" elapsed="0.000040"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
 <arg>add_argument</arg>
 <arg>--headless</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="NOT RUN" start="2025-11-19T00:53:26.356606" elapsed="0.000031"/>
+<status status="NOT RUN" start="2025-11-26T00:45:01.835957" elapsed="0.000028"/>
 </kw>
-<status status="NOT RUN" start="2025-11-19T00:53:26.356188" elapsed="0.000495"/>
+<status status="NOT RUN" start="2025-11-26T00:45:01.835556" elapsed="0.000470"/>
 </branch>
 <branch type="ELSE">
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>${DELAY}</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
-<status status="PASS" start="2025-11-19T00:53:26.356832" elapsed="0.000427"/>
+<status status="PASS" start="2025-11-26T00:45:01.836156" elapsed="0.000376"/>
 </kw>
-<status status="PASS" start="2025-11-19T00:53:26.356723" elapsed="0.000604"/>
+<status status="PASS" start="2025-11-26T00:45:01.836062" elapsed="0.000524"/>
 </branch>
-<status status="PASS" start="2025-11-19T00:53:26.356163" elapsed="0.001210"/>
+<status status="PASS" start="2025-11-26T00:45:01.835537" elapsed="0.001087"/>
 </if>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:26.357889" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<msg time="2025-11-26T00:45:01.837023" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${options}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-11-19T00:53:26.357534" elapsed="0.584451"/>
+<status status="PASS" start="2025-11-26T00:45:01.836742" elapsed="0.588145"/>
 </kw>
-<status status="PASS" start="2025-11-19T00:53:26.353246" elapsed="0.588945"/>
+<status status="PASS" start="2025-11-26T00:45:01.833175" elapsed="0.591885"/>
 </kw>
-<test id="s1-t1" name="Saving a reference shows on index" line="8">
-<kw name="Reset References" owner="resource" type="SETUP">
+<test id="s1-t1" name="Saving a reference with too long title" line="45">
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:26.943790" level="INFO">Opening url 'http://localhost:5001/reset_db'</msg>
-<arg>${RESET_URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-11-19T00:53:26.943526" elapsed="0.649186"/>
-</kw>
-<status status="PASS" start="2025-11-19T00:53:26.942855" elapsed="0.650348"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:27.595338" level="INFO">Opening url 'http://localhost:5001'</msg>
+<msg time="2025-11-26T00:45:02.426541" level="INFO">Opening url 'http://localhost:5001'</msg>
 <arg>${HOME_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-11-19T00:53:27.594592" elapsed="0.649099"/>
+<status status="PASS" start="2025-11-26T00:45:02.426096" elapsed="1.220548"/>
 </kw>
 <kw name="Title Should Be" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:28.757459" level="INFO">Page title is 'Reference app'.</msg>
+<msg time="2025-11-26T00:45:04.162233" level="INFO">Page title is 'Reference app'.</msg>
 <arg>Reference app</arg>
 <doc>Verifies that the current page title equals ``title``.</doc>
-<status status="PASS" start="2025-11-19T00:53:28.244719" elapsed="0.513161"/>
+<status status="PASS" start="2025-11-26T00:45:03.647438" elapsed="0.515224"/>
 </kw>
-<kw name="Click Link" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:28.760410" level="INFO">Clicking link 'Create new reference'.</msg>
+<kw name="Select From List By Label" owner="SeleniumLibrary">
+<msg time="2025-11-26T00:45:04.164435" level="INFO">Selecting options from selection list 'name:reference_type' by label @inproceedings.</msg>
+<arg>name:reference_type</arg>
+<arg>@inproceedings</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<status status="PASS" start="2025-11-26T00:45:04.163325" elapsed="6.254390"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-26T00:45:10.419234" level="INFO">Clicking button 'Create new reference'.</msg>
 <arg>Create new reference</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:28.758845" elapsed="1.678253"/>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-26T00:45:10.418612" elapsed="2.265373"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:30.439208" level="INFO">Typing text 'Test Author' into text field 'name:author'.</msg>
+<msg time="2025-11-26T00:45:12.685654" level="INFO">Typing text 'Long Author' into text field 'name:author'.</msg>
 <arg>name:author</arg>
-<arg>Test Author</arg>
+<arg>Long Author</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:30.438255" elapsed="1.678395"/>
+<status status="PASS" start="2025-11-26T00:45:12.684911" elapsed="1.652596"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:32.118921" level="INFO">Typing text 'Test Title' into text field 'name:title'.</msg>
+<msg time="2025-11-26T00:45:14.338450" level="INFO">Typing text 'pitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitkapitka' into text field 'name:title'.</msg>
 <arg>name:title</arg>
-<arg>Test Title</arg>
+<arg>${long_title}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:32.117951" elapsed="1.632969"/>
+<status status="PASS" start="2025-11-26T00:45:14.337967" elapsed="1.696449"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:33.753043" level="INFO">Typing text 'Test Book' into text field 'name:booktitle'.</msg>
+<msg time="2025-11-26T00:45:16.036999" level="INFO">Typing text 'Long Book' into text field 'name:booktitle'.</msg>
 <arg>name:booktitle</arg>
-<arg>Test Book</arg>
+<arg>Long Book</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:33.752110" elapsed="1.635551"/>
+<status status="PASS" start="2025-11-26T00:45:16.035926" elapsed="1.629117"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:35.389694" level="INFO">Typing text '2024' into text field 'name:year'.</msg>
+<msg time="2025-11-26T00:45:17.667098" level="INFO">Typing text '2024' into text field 'name:year'.</msg>
 <arg>name:year</arg>
 <arg>2024</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:35.388829" elapsed="1.636802"/>
+<status status="PASS" start="2025-11-26T00:45:17.665945" elapsed="1.626526"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:37.027554" level="INFO">Clicking button 'Create'.</msg>
+<msg time="2025-11-26T00:45:19.294646" level="INFO">Clicking button 'Create'.</msg>
 <arg>Create</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:37.026697" elapsed="2.360668"/>
+<status status="PASS" start="2025-11-26T00:45:19.293891" elapsed="2.159938"/>
 </kw>
 <kw name="Title Should Be" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:39.903607" level="INFO">Page title is 'Reference app'.</msg>
-<arg>Reference app</arg>
-<doc>Verifies that the current page title equals ``title``.</doc>
-<status status="PASS" start="2025-11-19T00:53:39.388557" elapsed="0.515518"/>
-</kw>
-<kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:40.938485" level="INFO">Current page contains text 'Test Title'.</msg>
-<arg>Test Title</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-11-19T00:53:39.905672" elapsed="1.033321"/>
-</kw>
-<kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:41.972463" level="INFO">Current page contains text 'Test Author'.</msg>
-<arg>Test Author</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-11-19T00:53:40.940066" elapsed="1.032781"/>
-</kw>
-<status status="PASS" start="2025-11-19T00:53:26.942301" elapsed="15.031311"/>
-</test>
-<test id="s1-t2" name="Saving a reference with too short title" line="22">
-<kw name="Reset References" owner="resource" type="SETUP">
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:41.976656" level="INFO">Opening url 'http://localhost:5001/reset_db'</msg>
-<arg>${RESET_URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-11-19T00:53:41.976248" elapsed="0.636296"/>
-</kw>
-<status status="PASS" start="2025-11-19T00:53:41.975562" elapsed="0.637754"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:42.614733" level="INFO">Opening url 'http://localhost:5001'</msg>
-<arg>${HOME_URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-11-19T00:53:42.614027" elapsed="0.633744"/>
-</kw>
-<kw name="Title Should Be" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:43.763712" level="INFO">Page title is 'Reference app'.</msg>
-<arg>Reference app</arg>
-<doc>Verifies that the current page title equals ``title``.</doc>
-<status status="PASS" start="2025-11-19T00:53:43.248934" elapsed="0.515861"/>
-</kw>
-<kw name="Click Link" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:43.766733" level="INFO">Clicking link 'Create new reference'.</msg>
-<arg>Create new reference</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:43.765977" elapsed="1.635321"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:45.402212" level="INFO">Typing text 'Test Author' into text field 'name:author'.</msg>
-<arg>name:author</arg>
-<arg>Test Author</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:45.401779" elapsed="1.631201"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:47.034875" level="INFO">Typing text 'a' into text field 'name:title'.</msg>
-<arg>name:title</arg>
-<arg>a</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:47.034067" elapsed="1.609589"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:48.646492" level="INFO">Typing text 'Test Book' into text field 'name:booktitle'.</msg>
-<arg>name:booktitle</arg>
-<arg>Test Book</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:48.645473" elapsed="1.630816"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:50.278262" level="INFO">Typing text '2024' into text field 'name:year'.</msg>
-<arg>name:year</arg>
-<arg>2024</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:50.277535" elapsed="1.613369"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:51.892475" level="INFO">Clicking button 'Create'.</msg>
-<arg>Create</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-11-19T00:53:51.891787" elapsed="2.150759"/>
-</kw>
-<kw name="Title Should Be" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:54.560098" level="INFO">Page title is 'Create a new reference'.</msg>
+<msg time="2025-11-26T00:45:21.966254" level="INFO">Page title is 'Create a new reference'.</msg>
 <arg>Create a new reference</arg>
 <doc>Verifies that the current page title equals ``title``.</doc>
-<status status="PASS" start="2025-11-19T00:53:54.043777" elapsed="0.516898"/>
+<status status="PASS" start="2025-11-26T00:45:21.454716" elapsed="0.512116"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-11-19T00:53:55.593471" level="INFO">Current page contains text 'Reference title length must be greater than 1'.</msg>
-<arg>Reference title length must be greater than 1</arg>
+<msg time="2025-11-26T00:45:23.000027" level="INFO">Current page contains text 'Reference title length must be less than 100'.</msg>
+<arg>Reference title length must be less than 100</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-11-19T00:53:54.561511" elapsed="1.032382"/>
+<status status="PASS" start="2025-11-26T00:45:21.967684" elapsed="1.033514"/>
 </kw>
-<status status="PASS" start="2025-11-19T00:53:41.974543" elapsed="13.620366"/>
+<status status="PASS" start="2025-11-26T00:45:02.425173" elapsed="20.576991"/>
 </test>
 <kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-11-19T00:53:55.597068" elapsed="0.598996"/>
+<status status="PASS" start="2025-11-26T00:45:23.003815" elapsed="0.599491"/>
 </kw>
-<status status="PASS" start="2025-11-19T00:53:26.208280" elapsed="29.987926"/>
+<status status="PASS" start="2025-11-26T00:45:01.687824" elapsed="21.915621"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Save Reference" id="s1" pass="2" fail="0" skip="0">Save Reference</stat>
+<stat name="Save Reference" id="s1" pass="1" fail="0" skip="0">Save Reference</stat>
 </suite>
 </statistics>
 <errors>
