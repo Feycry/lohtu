@@ -1,0 +1,38 @@
+[MASTER]
+
+ignore-paths=src/tests
+ignore=single_file_to_ignore.py
+
+[MESSAGE CONTROL]
+
+disable=raw-checker-failed,
+        bad-inline-option,
+        locally-disabled,
+        file-ignored,
+        suppressed-message,
+        useless-suppression,
+        deprecated-pragma,
+        use-symbolic-message-instead,
+        missing-module-docstring,
+        missing-function-docstring,
+        missing-class-docstring,
+        too-few-public-methods,
+        too-many-instance-attributes
+
+[FORMAT]
+max-line-length=400
+indent-string='    '
+
+[REFACTORING]
+
+[DESIGN]
+max-args=6
+max-branches=12
+max-returns=6
+max-statements=50
+max-locals=30
+
+
+
+
+

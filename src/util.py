@@ -1,13 +1,14 @@
 class UserInputError(Exception):
-    pass
+    """Domain-level error raised for invalid user input."""
+
 
 def validate_reference(title):
-
+    """Validate a reference title, raising on invalid constraints."""
     if not isinstance(title, str):
         raise TypeError("Title must be a string")
-    
-    if len(title) <= 1:
-        raise UserInputError("Reference title length must be greater than 1")
 
-    if len(title) > 100:
-          raise UserInputError("Reference title length must be less than 100")
+    length = len(title)
+    if length <= 1:
+        raise UserInputError("Reference title length must be greater than 1")
+    if length > 100:
+        raise UserInputError("Reference title length must be less than 100")
