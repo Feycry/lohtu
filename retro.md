@@ -11,3 +11,12 @@
 - Selkeämpi työnjako
 
 ## Sprint 2
+### Positiivista
+- Kaikki vaaditut user storyt tehty aikataulussa
+- Kommunikaatio
+- Pareittain työskentely
+
+
+### Kehitystoimenpiteet
+- Otetaan tarpeeksi user storyja, että työtä voidaan jakaa kaikille
+- Nopeampi valmius sovelluksen esittelyyn
