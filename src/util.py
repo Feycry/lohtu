@@ -1,5 +1,5 @@
 class UserInputError(Exception):
-    """Domain-level error raised for invalid user input."""
+    pass
 
 
 def validate_reference(title):

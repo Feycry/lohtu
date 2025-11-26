@@ -1,6 +1,6 @@
-"""Shared field name constants for reference entities and repository operations."""
 
-# Ordered keys used for string representation and general attribute handling
+
+
 ORDERED_KEYS = [
     "ref_type",
     "author",
@@ -27,7 +27,7 @@ ORDERED_KEYS = [
     "doi",
 ]
 
-# Column keys for database insert/update parameter mapping
+
 COLUMN_KEYS = [
     "author",
     "title",

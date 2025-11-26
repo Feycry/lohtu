@@ -35,9 +35,8 @@ def setup_db():
             db.session.execute(sql)
         db.session.commit()
 
-    print("Creating database")
 
-    # Read schema from schema.sql file
+
     schema_path = os.path.join(os.path.dirname(__file__), "schema.sql")
     with open(schema_path, "r", encoding="utf-8") as schema_file:
         schema_sql = schema_file.read().strip()

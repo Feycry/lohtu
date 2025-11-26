@@ -8,7 +8,7 @@ from util import validate_reference, UserInputError
 def index():
     """Renders the main page with the list of references."""
     references = get_references()
-    #unfinished = len([reference for reference in references if not reference.done])
+
     return render_template("index.html", references=references)
 
 @app.route("/new_reference")
@@ -115,7 +115,7 @@ def edit():
         return redirect("/")
 
 
-    # Access ref_type defensively to satisfy pylint's type checks
+
     ref_type = getattr(reference, "ref_type", None)
     required_fields = get_reference_type_required_fields(ref_type) if ref_type else []
 
@@ -150,7 +150,6 @@ def edit_reference():
         flash("Reference not found.")
         return redirect("/")
 
-    # Access ref_type defensively to satisfy pylint's type checks
     reference_type = getattr(reference, "ref_type", None)
 
 
