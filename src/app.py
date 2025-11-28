@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, jsonify, flash
+from flask import redirect, render_template, request, jsonify, flash, Response
 from db_helper import reset_db, delete_reference
 from repositories.reference_repository import get_references, create_reference, get_reference_type_required_fields, get_reference, update_reference
 from config import app, test_env
@@ -210,6 +210,26 @@ def edit_reference():
     except (UserInputError, TypeError) as error:
         flash(str(error))
         return redirect(f"/edit_reference?reference_id={reference_id}")
+
+@app.route("/export")
+def export():
+    """Starts a download for all references in a single .bib file"""
+    references = get_references()
+
+    # Build content in BibTeX format
+    content = ""
+    for ref in references:
+        content += ref.to_bibtex()
+        content += "\n\n"
+
+    # Create a response with the content as a downloadable bib file
+    return Response(
+        content,
+        mimetype="text/plain",
+        headers={
+            "Content-Disposition": "attachment; filename=references.bib"
+        }
+    )
 
 # testausta varten oleva reitti
 if test_env:

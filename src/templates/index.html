@@ -36,8 +36,8 @@ Reference app
           <button type="submit">Delete reference</button>
         </form>
         <form action="/edit_reference" method="get">
-        <input type="hidden" name="reference_id" value="{{ reference.id }}">
-        <button type="submit">Edit reference</button>
+          <input type="hidden" name="reference_id" value="{{ reference.id }}">
+          <button type="submit">Edit reference</button>
         </form>
         <button class="btn btn-primary" onClick="copyToClipboard(`{{ reference.to_bibtex() }}`)">Copy bibtex to clipboard</button>
       </div>
@@ -66,6 +66,10 @@ Reference app
 <form action="/new_reference" method="get" onsubmit="return validateReferenceType()">
   <input type="hidden" name="reference_type" id="selected_reference_type">
   <button type="submit">Create new reference</button>
+</form>
+
+<form action="/export" method="get">
+  <button type="submit">Export all to bibtex</button>
 </form>
 
 <script>
