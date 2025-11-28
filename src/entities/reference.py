@@ -23,3 +23,14 @@ class Reference:
                 else:
                     parts.append(f"{label}: {value}")
         return ", ".join(parts) if parts else f"Reference #{self.id}"
+    
+    def to_bibtex(self):
+        parts = []
+        for key in ORDERED_KEYS:
+            value = getattr(self, key, None)
+            if value:
+                if key == "ref_type":
+                    parts.append(f"@{value}" + "{" + f"{getattr(self, "id")}")
+                else:
+                    parts.append(f"{key}: {value}")
+        return ",\n\t".join(parts) + "\n}" if parts else f"ERROR: Reference #{self.id}"
