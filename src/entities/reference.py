@@ -23,7 +23,7 @@ class Reference:
                 else:
                     parts.append(f"{label}: {value}")
         return ", ".join(parts) if parts else f"Reference #{self.id}"
-    
+
     def to_bibtex(self):
         parts = []
         for key in ORDERED_KEYS:
