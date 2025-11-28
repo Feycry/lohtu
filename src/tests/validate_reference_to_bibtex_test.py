@@ -19,12 +19,12 @@ class TestReferenceToBibtex(unittest.TestCase):
 
         expected_bibtex = (
             "@article{1,\n"
-            "\tauthor: John Doe,\n"
-            "\ttitle: Sample Article Title,\n"
-            "\tjournal: Test Journal,\n"
-            "\tyear: 2023,\n"
-            "\tvolume: 10,\n"
-            "\tpages: 123-456\n"
+            "\tauthor = {John Doe},\n"
+            "\ttitle = {Sample Article Title},\n"
+            "\tjournal = {Test Journal},\n"
+            "\tyear = {2023},\n"
+            "\tvolume = {10},\n"
+            "\tpages = {123-456}\n"
             "}"
         )
 

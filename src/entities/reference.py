@@ -32,5 +32,5 @@ class Reference:
                 if key == "ref_type":
                     parts.append(f"@{value}" + "{" + f"{getattr(self, "id")}")
                 else:
-                    parts.append(f"{key}: {value}")
+                    parts.append(f"{key} = " + "{" + f"{value}" + "}")
         return ",\n\t".join(parts) + "\n}" if parts else f"ERROR: Reference #{self.id}"
