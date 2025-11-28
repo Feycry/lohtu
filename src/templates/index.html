@@ -29,6 +29,7 @@ Reference app
         <input type="hidden" name="reference_id" value="{{ reference.id }}">
         <button type="submit">Edit reference</button>
         </form>
+        <button class="btn btn-primary" onClick="copyToClipboard(`{{ reference.to_bibtex() }}`)">Copy bibtex to clipboard</button>
       </div>
     </li>
   {% endfor %}
@@ -69,6 +70,10 @@ Reference app
     
     document.getElementById('selected_reference_type').value = selectedValue;
     return true;
+  }
+
+  function copyToClipboard(bibtex) {
+    navigator.clipboard.writeText(bibtex)
   }
 </script>
 
