@@ -7,9 +7,11 @@ from util import validate_reference, UserInputError
 @app.route("/")
 def index():
     """Renders the main page with the list of references."""
-    references = get_references()
+    # Read optional search query from GET params and pass it to repository
+    q = request.args.get("q", "").strip()
+    references = get_references(q if q else None)
 
-    return render_template("index.html", references=references)
+    return render_template("index.html", references=references, q=q)
 
 @app.route("/new_reference")
 def new():

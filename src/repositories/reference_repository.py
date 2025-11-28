@@ -3,6 +3,15 @@ from config import db
 from entities.all_fields import COLUMN_KEYS
 from entities.reference import Reference
 
+BASE_SQL = (
+    "SELECT r.id, rt.name, r.author, r.title, r.booktitle, r.year, r.url, r.doi,"
+    " r.editor, r.volume, r.number, r.series, r.pages, r.address,"
+    " r.month, r.organization, r.publisher, r.edition, r.howpublished,"
+    " r.institution, r.journal, r.note, r.school, r.type"
+    " FROM refs r"
+    " LEFT JOIN refType rt ON r.ref_type_id = rt.id"
+)
+
 def get_reference_type_required_fields(reference_type):
     """Get the required fields for a specific reference type."""
     sql = text('SELECT required_fields FROM refType WHERE name = :reference_type')
@@ -10,13 +19,44 @@ def get_reference_type_required_fields(reference_type):
     row = result.fetchone()
     return row[0] if row else []
 
-def get_references():
-    result = db.session.execute(text('''SELECT r.id, rt.name, r.author, r.title, r.booktitle, r.year, r.url, r.doi,
-                                        r.editor, r.volume, r.number, r.series, r.pages, r.address,
-                                        r.month, r.organization, r.publisher, r.edition, r.howpublished,
-                                        r.institution, r.journal, r.note, r.school, r.type
-                                        FROM refs r
-                                        LEFT JOIN refType rt ON r.ref_type_id = rt.id'''))
+def get_references(q=None):
+    """Return list of references. If q is provided, filter by substring match
+    across selectable columns (case-insensitive)."""
+
+    if q:
+        sql = text(
+            BASE_SQL
+            + " WHERE lower(r.author) LIKE lower(:q)"
+            + " OR lower(r.title) LIKE lower(:q)"
+            + " OR lower(r.booktitle) LIKE lower(:q)"
+            + " OR lower(r.year) LIKE lower(:q)"
+            + " OR lower(r.url) LIKE lower(:q)"
+            + " OR lower(r.doi) LIKE lower(:q)"
+            + " OR lower(r.editor) LIKE lower(:q)"
+            + " OR lower(r.volume) LIKE lower(:q)"
+            + " OR lower(r.number) LIKE lower(:q)"
+            + " OR lower(r.series) LIKE lower(:q)"
+            + " OR lower(r.pages) LIKE lower(:q)"
+            + " OR lower(r.address) LIKE lower(:q)"
+            + " OR lower(r.month) LIKE lower(:q)"
+            + " OR lower(r.organization) LIKE lower(:q)"
+            + " OR lower(r.publisher) LIKE lower(:q)"
+            + " OR lower(r.edition) LIKE lower(:q)"
+            + " OR lower(r.howpublished) LIKE lower(:q)"
+            + " OR lower(r.institution) LIKE lower(:q)"
+            + " OR lower(r.journal) LIKE lower(:q)"
+            + " OR lower(r.note) LIKE lower(:q)"
+            + " OR lower(r.school) LIKE lower(:q)"
+            + " OR lower(r.type) LIKE lower(:q)"
+            + " OR lower(rt.name) LIKE lower(:q)"
+            + " ORDER BY r.id DESC"
+        )
+        params = {"q": f"%{q}%"}
+        result = db.session.execute(sql, params)
+    else:
+        sql = text(BASE_SQL + " ORDER BY r.id DESC")
+        result = db.session.execute(sql)
+
     references = result.fetchall()
     return [
         Reference(
