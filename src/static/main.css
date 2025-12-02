@@ -23,3 +23,15 @@ h2 {
   top: 10px;
   right: 10px;
 }
+
+.frontpage-references {
+  background: #d6d6d6;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-sizing: border-box;
+  height: 160px;
+  width: 360px;
+  overflow: auto;
+}

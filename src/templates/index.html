@@ -54,7 +54,7 @@ Reference app
             }
     </script>
     <li style="display: flex">
-      <div>
+      <div class="frontpage-references">
         {{ reference }} 
         <form action="/delete_ref" method="post" onsubmit="showConfirmation(event)" >
           <input type="hidden" name="reference_id" value="{{ reference.id }}">
