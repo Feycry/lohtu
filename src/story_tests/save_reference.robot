@@ -24,7 +24,7 @@ Saving a reference shows on index
 Deleting a reference removes it from index
     Go To  ${HOME_URL}
     Title Should Be  Reference app
-    Click Button  Delete reference
+    Click Button  Delete 
     Alert Should Be Present  Confrim deletion of reference
     Page Should Not Contain  Author
 
@@ -64,7 +64,7 @@ Saving a reference after editing works
     Input Text  name:booktitle  Test Book
     Input Text  name:year       2024
     Click Button  Create
-    Click Button  Edit reference
+    Click Button  Edit
     Title Should Be  Edit reference
     Input Text  name:year  2025
     Click Button  Update
@@ -80,7 +80,7 @@ Canceling changes works
     Input Text  name:booktitle  Test Book
     Input Text  name:year       2024
     Click Button  Create
-    Click Button  Edit reference
+    Click Button  Edit
     Title Should Be  Edit reference
     Input Text  name:year  2025
     Click Link  Cancel
