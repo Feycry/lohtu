@@ -24,6 +24,7 @@ h2 {
   right: 10px;
 }
 
+ /* Nää on refeboxeille */
 .frontpage-references {
   background: #d6d6d6;
   border: 1px solid #e5e5e5;
@@ -35,4 +36,26 @@ h2 {
   width: 360px;
   overflow: auto;
   margin: 16px;
+}
+
+.frontpage-references {
+  display: flex;
+  flex-direction: column;
+}
+
+.frontpage-references .actions {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.frontpage-references .actions form {
+  display: inline-flex;
+  margin: 0;
+}
+
+.frontpage-references .actions > button {
+  display: inline-flex;
+  align-items: center;
 }

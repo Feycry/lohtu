@@ -55,16 +55,18 @@ Reference app
     </script>
     <li style="display: flex">
       <div class="frontpage-references">
-        {{ reference }} 
-        <form action="/delete_ref" method="post" onsubmit="showConfirmation(event)" >
-          <input type="hidden" name="reference_id" value="{{ reference.id }}">
-          <button type="submit">Delete reference</button>
-        </form>
-        <form action="/edit_reference" method="get">
-          <input type="hidden" name="reference_id" value="{{ reference.id }}">
-          <button type="submit">Edit reference</button>
-        </form>
-        <button class="btn btn-primary" onClick="copyToClipboard(`{{ reference.to_bibtex() }}`)">Copy bibtex to clipboard</button>
+        {{ reference }}
+        <div class="actions">
+          <form action="/edit_reference" method="get">
+            <input type="hidden" name="reference_id" value="{{ reference.id }}">
+            <button type="submit">Edit</button>
+          </form>
+          <form action="/delete_ref" method="post" onsubmit="showConfirmation(event)">
+            <input type="hidden" name="reference_id" value="{{ reference.id }}">
+            <button type="submit">Delete</button>
+          </form>
+          <button class="btn btn-primary" onClick="copyToClipboard(`{{ reference.to_bibtex() }}`)">Copy bibtex</button>
+        </div>
       </div>
     </li>
   {% endfor %}
