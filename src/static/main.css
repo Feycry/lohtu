@@ -24,6 +24,19 @@ h2 {
   right: 10px;
 }
 
+.wrapper {
+  border: 1px solid #e5e5e5;
+  background: #d6d6d6;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+input,
+button {
+  background-color: transparent;
+  border: 0;
+}
+
  /* Nää on refeboxeille */
 .frontpage-references {
   background: #d6d6d6;
