@@ -20,6 +20,7 @@ h2 {
 
 .search {
   position: absolute;
+  background: transparent;
   top: 10px;
   right: 10px;
 }
@@ -30,9 +31,9 @@ h2 {
   border-radius: 4px;
   display: inline-block;
 }
-
-input,
-button {
+.search_input,
+.search_button {
+  border: 1px solid #e5e5e5;
   background-color: transparent;
   border: 0;
 }
