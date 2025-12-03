@@ -1,10 +1,14 @@
 import unittest
 from config import app
 from repositories.reference_repository import create_reference
-from db_helper import reset_db
+from db_helper import reset_db, setup_db
 from app import export
 
 class TestExportBibTeX(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        with app.app_context():
+            setup_db()
     def setUp(self):
         self.client = app.test_client()
         with app.app_context():

@@ -1,6 +1,6 @@
 import unittest
 from config import app
-from db_helper import reset_db
+from db_helper import reset_db, setup_db
 from repositories.reference_repository import (
     create_reference,
     get_references,
@@ -11,6 +11,10 @@ from repositories.reference_repository import (
 
 
 class TestRepositorySearchAndUpdate(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        with app.app_context():
+            setup_db()
     def setUp(self):
         with app.app_context():
             reset_db()

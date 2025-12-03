@@ -1,10 +1,15 @@
 import unittest
 from config import app
-from db_helper import reset_db
+from db_helper import reset_db, setup_db
 from repositories.reference_repository import create_reference, get_references
 
 
 class TestAppRoutes(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Ensure DB schema exists before any test runs
+        with app.app_context():
+            setup_db()
     def setUp(self):
         self.client = app.test_client()
         with app.app_context():
