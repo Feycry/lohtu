@@ -22,3 +22,6 @@ https://docs.google.com/spreadsheets/d/1CTdGofwCAQt9wFUSohZNbdltgjcS-296MohrMO4q
    eval $(poetry env activate)<br>
 4. Start the application<br>
    python3 src/index.py<br>
+
+# Lisenssi
+Mozilla Public-lisenssi 2.0
