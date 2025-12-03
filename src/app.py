@@ -11,7 +11,7 @@ def index():
     q = request.args.get("q", "").strip()
     references = get_references(q if q else None)
 
-    return render_template("index.html", references=references, q=q)
+    return render_template("index.html", references=references, q=q, title="Reference app")
 
 @app.route("/new_reference")
 def new():

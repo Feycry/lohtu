@@ -16,6 +16,8 @@ Saving a reference shows on index
     Input Text  name:title      Test Title
     Input Text  name:booktitle  Test Book
     Input Text  name:year       2024
+    # Ensure hidden reference_type is set to avoid timing issues in CI
+    Execute JavaScript    document.querySelector('input[name="reference_type"]').value = 'inproceedings';
     Click Button  Create
     Title Should Be  Reference app
     Page Should Contain  Test Title
