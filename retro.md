@@ -20,3 +20,12 @@
 ### Kehitystoimenpiteet
 - Otetaan tarpeeksi user storyja, että työtä voidaan jakaa kaikille
 - Nopeampi valmius sovelluksen esittelyyn
+
+## Sprint 3
+### Positiivista
+- Kaikki vaaditut user storyt tehty aikataulussa
+
+### Kehitystoimenpiteet
+- Coveragen, lisenssin ja releasen luominen 
+- Backlogissa turhaa tavaraa
+
