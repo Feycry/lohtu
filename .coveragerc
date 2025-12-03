@@ -1,7 +1,7 @@
 [run]
 source = src
 omit = 
-    src/index.py
+    src/app.py
     src/tests/*
     src/story_tests/*
     src/config.py
