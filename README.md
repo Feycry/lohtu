@@ -1,5 +1,5 @@
 [![codecov](https://codecov.io/gh/Feycry/lohtu/graph/badge.svg?token=B4YSGFHEO1)](https://codecov.io/gh/Feycry/lohtu)
-[![GHA workflow badge](https://github.com/Feycry/lohtu/blob/main/.github/workflows/main.yml)
+[![GHA workflow badge](https://github.com/Feycry/lohtu/blob/main/.github/workflows/main.yml)]
 
 # lohtu
 Ohjelmistotuotantotokurssin projekti
