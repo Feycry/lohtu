@@ -1,12 +1,9 @@
 [run]
 source = src
 omit = 
-    src/app.py
+    src/index.py
     src/tests/*
     src/story_tests/*
     src/config.py
     src/static/*
     src/templates/*
-
-[report]
-ignore_errors = True
