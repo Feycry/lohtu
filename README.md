@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/Feycry/lohtu/graph/badge.svg?token=B4YSGFHEO1)](https://codecov.io/gh/Feycry/lohtu)
+
 # lohtu
 Ohjelmistotuotantotokurssin projekti
 
