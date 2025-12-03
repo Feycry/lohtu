@@ -7,3 +7,6 @@ omit =
     src/config.py
     src/static/*
     src/templates/*
+
+[report]
+ignore_errors = True
