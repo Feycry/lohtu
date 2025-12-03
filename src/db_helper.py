@@ -31,7 +31,7 @@ def setup_db():
     if len(tables_in_db) > 0:
         print(f"Tables exist, dropping: {', '.join(tables_in_db)}")
         for table in tables_in_db:
-            sql = text(f"DROP TABLE {table}")
+            sql = text(f"DROP TABLE {table} CASCADE")
             db.session.execute(sql)
         db.session.commit()
 

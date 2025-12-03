@@ -1,5 +1,5 @@
 from flask import redirect, render_template, request, jsonify, flash, Response
-from db_helper import reset_db, delete_reference
+from db_helper import reset_db, delete_reference, setup_db, tables
 from repositories.reference_repository import get_references, create_reference, get_reference_type_required_fields, get_reference, update_reference
 from config import app, test_env
 from util import validate_reference, UserInputError
@@ -11,7 +11,7 @@ def index():
     q = request.args.get("q", "").strip()
     references = get_references(q if q else None)
 
-    return render_template("index.html", references=references, q=q)
+    return render_template("index.html", references=references, q=q, title="Reference app")
 
 @app.route("/new_reference")
 def new():
@@ -237,7 +237,12 @@ if test_env:
     @app.route("/reset_db")
     def reset_database():
         """Resets the database by clearing all references."""
-        reset_db()
+        # Ensure schema exists in CI containers
+        existing = tables()
+        if not existing or "reftype" not in existing or "refs" not in existing:
+            setup_db()
+        else:
+            reset_db()
         return jsonify({ 'message': "db reset" })
 
 @app.route("/delete_ref", methods=["POST"])

@@ -17,7 +17,8 @@ Search filters references by query
     Input Text  name:booktitle  Test
     Input Text  name:year       2024
     Click Button  Create
-    Title Should Be  Reference app
+    Page Should Contain  Test Title
+    Page Should Contain  Test Author
 
     Select From List By Label    name:reference_type    @article
     Click Button  Create new reference
@@ -26,7 +27,8 @@ Search filters references by query
     Input Text  name:journal    Journal
     Input Text  name:year       2023
     Click Button  Create
-    Title Should Be  Reference app
+    Page Should Contain  Should not appear in filter search
+    Page Should Contain  Do not appear in search
 
 
     Input Text    name:q    Test
