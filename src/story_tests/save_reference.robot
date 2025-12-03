@@ -85,3 +85,89 @@ Canceling changes works
     Input Text  name:year  2025
     Click Link  Cancel
     Page Should Not Contain  Year: 2025
+
+Creating inproceedings without author (required)
+    Go To  ${HOME_URL}
+    Title Should Be  Reference app
+    Select From List By Label    name:reference_type    @inproceedings
+    Click Button  Create new reference
+    Title Should Be  Create a new reference
+    Input Text  name:title      Missing Author Title
+    Input Text  name:booktitle  Conf Book
+    Input Text  name:year       2024
+    Click Button  Create
+    Title Should Be  Create a new reference
+
+Creating inproceedings without booktitle (required)
+    Go To  ${HOME_URL}
+    Title Should Be  Reference app
+    Select From List By Label    name:reference_type    @inproceedings
+    Click Button  Create new reference
+    Title Should Be  Create a new reference
+    Input Text  name:author     Missing Book Author
+    Input Text  name:title      Missing Book Title
+    Input Text  name:year       2024
+    Click Button  Create
+    Title Should Be  Create a new reference
+
+Creating inproceedings without year (required)
+    Go To  ${HOME_URL}
+    Title Should Be  Reference app
+    Select From List By Label    name:reference_type    @inproceedings
+    Click Button  Create new reference
+    Title Should Be  Create a new reference
+    Input Text  name:author     Missing Year Author
+    Input Text  name:title      Missing Year Title
+    Input Text  name:booktitle  Conf Book
+    Click Button  Create
+    Title Should Be  Create a new reference
+
+Creating article without journal (required)
+    Go To  ${HOME_URL}
+    Title Should Be  Reference app
+    Select From List By Label    name:reference_type    @article
+    Click Button  Create new reference
+    Title Should Be  Create a new reference
+    Input Text  name:author     Article Author
+    Input Text  name:title      Article Title
+    Input Text  name:year       2025
+    Click Button  Create
+    Title Should Be  Create a new reference
+
+Creating book without publisher (required)
+    Go To  ${HOME_URL}
+    Title Should Be  Reference app
+    Select From List By Label    name:reference_type    @book
+    Click Button  Create new reference
+    Title Should Be  Create a new reference
+    Input Text  name:author     Book Author
+    Input Text  name:title      Book Title
+    Input Text  name:year       2022
+    Click Button  Create
+    Title Should Be  Create a new reference
+
+Creating mastersthesis without school (required)
+    Go To  ${HOME_URL}
+    Title Should Be  Reference app
+    Select From List By Label    name:reference_type    @mastersthesis
+    Click Button  Create new reference
+    Title Should Be  Create a new reference
+    Input Text  name:author     Thesis Author
+    Input Text  name:title      Thesis Title
+    Input Text  name:year       2021
+    Click Button  Create
+    Title Should Be  Create a new reference
+
+Creating inproceedings with spaces-only title (invalid)
+    Go To  ${HOME_URL}
+    Title Should Be  Reference app
+    Select From List By Label    name:reference_type    @inproceedings
+    Click Button  Create new reference
+    Title Should Be  Create a new reference
+    Input Text  name:author     Author
+    Input Text  name:title      ${SPACE}
+    Input Text  name:booktitle  Conf Book
+    Input Text  name:year       2024
+    Click Button  Create
+    Title Should Be  Create a new reference
+    Page Should Contain  Title cannot be empty or whitespace only

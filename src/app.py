@@ -99,7 +99,8 @@ def reference_creation():
         return redirect("/")
     except (UserInputError, TypeError) as error:
         flash(str(error))
-        return  redirect("/new_reference")
+
+        return redirect(f"/new_reference?reference_type={reference_type}")
 
 @app.route("/edit_reference")
 def edit():
