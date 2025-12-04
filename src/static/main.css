@@ -23,6 +23,8 @@ h2 {
   background: transparent;
   top: 25px;
   right: 10px;
+  max-width: 300px;
+  height: 25px;
 }
 
 .wrapper {
@@ -36,6 +38,8 @@ h2 {
   border: 1px solid #e5e5e5;
   background-color: transparent;
   border: 0;
+  max-width: 300px;
+  height: 25px;
 }
 
  /* Nää on refeboxeille */
