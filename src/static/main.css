@@ -53,6 +53,12 @@ h2 {
   border-radius: 4px;
 }
 
+.create_new_ref {
+  position: absolute;
+  top: 85px;
+  left: 130px;
+}
+
  /* Nää on refeboxeille */
 .frontpage-references {
   background: #d6d6d6;
