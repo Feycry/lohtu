@@ -94,3 +94,30 @@ h2 {
   display: inline-flex;
   align-items: center;
 }
+
+.layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-right: 40px;
+  margin-left: 16px;
+}
+
+.detail-pane {
+  flex: 0 0 500px;
+  max-width: 520px;
+  min-width: 420px;
+  border: 1px solid #e3e3e3;
+  padding: 1.5rem;
+  min-height: 240px;
+  background: #d6d6d6;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #3a3a3a;
+  line-height: 1.35;
+}

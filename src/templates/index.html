@@ -43,43 +43,50 @@ Reference app
   <button type="submit" class="add_button">Create new reference</button>
 </form>
 
-<ul>
-  {% for reference in references %}
-    <script>
-        function showConfirmation(event) {
-            event.preventDefault();
+<div class="layout">
+  <ul>
+    {% for reference in references %}
+      <script>
+          function showConfirmation(event) {
+              event.preventDefault();
 
-            if (confirm("Confrim deletion of reference")) {
-                event.target.submit();}
-            }
-    </script>
-    <li style="display: flex">
-      <div class="frontpage-references">
-        <div><strong>@{{ reference.ref_type }}</strong></div>
-        {% if reference.required_fields %}
-          {% for field in reference.required_fields %}
-            {% set val = reference[field] %}
-            {% if val %}
-              <div>{{ field|replace('_',' ')|title }}: {{ val }}</div>
-            {% endif %}
-          {% endfor %}
-        {% else %}
-          <div>No required fields</div>
-        {% endif %}
-        <div class="actions">
-          <form action="/edit_reference" method="get">
-            <input type="hidden" name="reference_id" value="{{ reference.id }}">
-            <button type="submit">Edit</button>
-          </form>
-          <form action="/delete_ref" method="post" onsubmit="showConfirmation(event)">
-            <input type="hidden" name="reference_id" value="{{ reference.id }}">
-            <button type="submit">Delete</button>
-          </form>
-          <button class="btn btn-primary" onClick="copyToClipboard(`{{ reference.to_bibtex() }}`)">Copy bibtex</button>
+              if (confirm("Confrim deletion of reference")) {
+                  event.target.submit();}
+              }
+      </script>
+      <li style="display: flex">
+        <div class="frontpage-references" style="cursor: pointer;" onclick="showBibtex(`{{ reference.to_bibtex() }}`)">
+          <div><strong>@{{ reference.ref_type }}</strong></div>
+          {% if reference.required_fields %}
+            {% for field in reference.required_fields %}
+              {% set val = reference[field] %}
+              {% if val %}
+                <div>{{ field|replace('_',' ')|title }}: {{ val }}</div>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            <div>No required fields</div>
+          {% endif %}
+          <div class="actions">
+            <form action="/edit_reference" method="get">
+              <input type="hidden" name="reference_id" value="{{ reference.id }}">
+              <button type="submit">Edit</button>
+            </form>
+            <form action="/delete_ref" method="post" onsubmit="showConfirmation(event)">
+              <input type="hidden" name="reference_id" value="{{ reference.id }}">
+              <button type="submit">Delete</button>
+            </form>
+            <button class="btn btn-primary" onClick="copyToClipboard(`{{ reference.to_bibtex() }}`); event.stopPropagation();">Copy bibtex</button>
+          </div>
         </div>
-      </div>
-    </li>
-  {% endfor %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div id="detail-pane" class="detail-pane">
+    <em>Click a reference to show its BibTeX here.</em>
+  </div>
+</div>
 
 <form action="/export" method="get">
   <button type="submit">Export all to bibtex</button>
@@ -101,6 +108,12 @@ Reference app
 
   function copyToClipboard(bibtex) {
     navigator.clipboard.writeText(bibtex)
+  }
+
+  function showBibtex(bibtex) {
+    const pane = document.getElementById('detail-pane');
+    if (!pane) return;
+    pane.textContent = bibtex;
   }
 </script>
 
