@@ -42,6 +42,13 @@ h2 {
   height: 25px;
 }
 
+.ref_selection {
+  border: 1px solid #e5e5e5;
+  background: #d6d6d6;
+  color: rgb(81, 81, 81);
+  border-radius: 4px;
+}
+
  /* Nää on refeboxeille */
 .frontpage-references {
   background: #d6d6d6;
