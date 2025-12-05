@@ -7,7 +7,7 @@ BASE_SQL = (
     "SELECT r.id, rt.name, r.author, r.title, r.booktitle, r.year, r.url, r.doi,"
     " r.editor, r.volume, r.number, r.series, r.pages, r.address,"
     " r.month, r.organization, r.publisher, r.edition, r.howpublished,"
-    " r.institution, r.journal, r.note, r.school, r.type"
+    " r.institution, r.journal, r.note, r.school, r.type, rt.required_fields"
     " FROM refs r"
     " LEFT JOIN refType rt ON r.ref_type_id = rt.id"
 )
@@ -84,6 +84,7 @@ def get_references(q=None):
             note=reference[21],
             school=reference[22],
             type=reference[23],
+            required_fields=reference[24],
         )
         for reference in references
     ]
@@ -93,7 +94,7 @@ def get_reference(reference_id):
     sql = text('''SELECT r.id, rt.name, r.author, r.title, r.booktitle, r.year, r.url, r.doi,
                   r.editor, r.volume, r.number, r.series, r.pages, r.address,
                   r.month, r.organization, r.publisher, r.edition, r.howpublished,
-                  r.institution, r.journal, r.note, r.school, r.type
+                  r.institution, r.journal, r.note, r.school, r.type, rt.required_fields
                   FROM refs r
                   LEFT JOIN refType rt ON r.ref_type_id = rt.id
                   WHERE r.id = :reference_id''')
@@ -126,6 +127,7 @@ def get_reference(reference_id):
             note=reference[21],
             school=reference[22],
             type=reference[23],
+            required_fields=reference[24],
         )
     return None
 

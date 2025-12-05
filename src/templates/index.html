@@ -55,7 +55,17 @@ Reference app
     </script>
     <li style="display: flex">
       <div class="frontpage-references">
-        {{ reference }}
+        <div><strong>@{{ reference.ref_type }}</strong></div>
+        {% if reference.required_fields %}
+          {% for field in reference.required_fields %}
+            {% set val = reference[field] %}
+            {% if val %}
+              <div>{{ field|replace('_',' ')|title }}: {{ val }}</div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <div>No required fields</div>
+        {% endif %}
         <div class="actions">
           <form action="/edit_reference" method="get">
             <input type="hidden" name="reference_id" value="{{ reference.id }}">
