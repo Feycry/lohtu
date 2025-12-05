@@ -42,6 +42,10 @@ h2 {
   height: 25px;
 }
 
+.ref_type {
+  color: rgb(81, 81, 81);
+}
+
 .ref_selection {
   border: 1px solid #e5e5e5;
   background: #d6d6d6;
