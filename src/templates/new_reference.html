@@ -9,7 +9,7 @@ Create a new reference
 <h2>Create a new reference</h2>
 
 {% if reference_type %}
-<p><strong>Reference Type:</strong> @{{ reference_type }}</p>
+<p class="ref_type_text"><strong>Reference Type:</strong> @{{ reference_type }}</p>
 {% endif %}
 
 <form action="/create_reference" method="post">
@@ -26,20 +26,24 @@ Create a new reference
   
   {% if required_fields %}
   <h3>Required Fields</h3>
+  <div class="field_boxes">
   {% for field in required_fields %}
   <label for="{{ field }}">{{ field.capitalize() }}:</label>
-  <input type="text" name="{{ field }}" id="{{ field }}" required>
+  <input type="text" name="{{ field }}" id="{{ field }}" value="{{ prefill.get(field, '') }}" required>
   <br>
   {% endfor %}
+  </div>
   {% endif %}
   
   {% if optional_fields %}
   <h3>Optional Fields</h3>
+  <div class="field_boxes">
   {% for field in optional_fields %}
   <label for="{{ field }}">{{ field.capitalize() }}:</label>
-  <input type="text" name="{{ field }}" id="{{ field }}">
+  <input type="text" name="{{ field }}" id="{{ field }}" value="{{ prefill.get(field, '') }}">
   <br>
   {% endfor %}
+  </div>
   {% endif %}
   
   <button type="submit">

@@ -1,8 +1,13 @@
+import re
+from urllib.parse import urlencode
 from flask import redirect, render_template, request, jsonify, flash, Response
+import requests
 from db_helper import reset_db, delete_reference, setup_db, tables
 from repositories.reference_repository import get_references, create_reference, get_reference_type_required_fields, get_reference, update_reference
 from config import app, test_env
 from util import validate_reference, UserInputError
+from entities.all_fields import COLUMN_KEYS
+
 
 @app.route("/")
 def index():
@@ -24,20 +29,16 @@ def new():
         required_fields = get_reference_type_required_fields(reference_type)
 
 
-    all_fields = [
-        'author', 'title', 'journal', 'booktitle', 'year', 'publisher', 
-        'school', 'institution', 'url', 'doi', 'editor', 'volume', 
-        'number', 'series', 'pages', 'address', 'month', 'organization',
-        'edition', 'howpublished', 'note', 'type'
-    ]
+    optional_fields = [field for field in COLUMN_KEYS if field not in required_fields]
 
-
-    optional_fields = [field for field in all_fields if field not in required_fields]
+    # Get prefilled data from session or query params (from DOI lookup)
+    prefill = {field: request.args.get(field, "") for field in COLUMN_KEYS}
 
     return render_template("new_reference.html",
                          reference_type=reference_type,
                          required_fields=required_fields,
-                         optional_fields=optional_fields)
+                         optional_fields=optional_fields,
+                         prefill=prefill)
 
 @app.route("/create_reference", methods=["POST"])
 def reference_creation():
@@ -288,3 +289,51 @@ def del_reference():
     else:
         flash("Deletetion failed.")
     return redirect("/")
+
+@app.route("/lookup_doi", methods=["POST"])
+def lookup_doi():
+    """Looks up a DOI and redirects to new_reference with parsed BibTeX fields."""
+    doi = request.form.get("doi", "").strip()
+
+    if not doi:
+        flash("DOI is required")
+        return redirect("/new_reference")
+
+    # Fetch BibTeX from DOI
+    base_url = "https://doi.org/"
+    url = base_url + doi
+    headers = {"Accept": "application/x-bibtex"}
+
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        bibtex = response.text
+
+        # Parse BibTeX entry
+        fields = {}
+
+        # Extract reference type
+        type_match = re.search(r'@(\w+)\{', bibtex)
+        if type_match:
+            fields['reference_type'] = type_match.group(1).lower()
+
+        # Extract fields using regex - handle both {} and "" delimiters
+        # This regex handles multi-line values and nested braces better
+        field_pattern = re.compile(r'(\w+)\s*=\s*\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}|(\w+)\s*=\s*"([^"]*)"')
+        for match in field_pattern.finditer(bibtex):
+            if match.group(1):  # Brace-delimited
+                field_name = match.group(1).lower()
+                field_value = match.group(2).strip()
+            else:  # Quote-delimited
+                field_name = match.group(3).lower()
+                field_value = match.group(4).strip()
+            fields[field_name] = field_value
+
+        # Build redirect URL with query parameters
+        params = urlencode(fields)
+        flash("DOI lookup successful! Fields have been populated.")
+        return redirect(f"/new_reference?{params}")
+
+    except requests.exceptions.RequestException as e:
+        flash(f"Error resolving DOI: {str(e)}")
+        return redirect("/new_reference")
