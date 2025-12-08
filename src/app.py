@@ -232,6 +232,38 @@ def export():
         }
     )
 
+@app.route("/export_selected")
+def export_selected():
+    # Read selected reference ids from query params
+    reference_ids = request.args.getlist('reference_id')
+
+    if not reference_ids:
+        flash("No references selected.")
+        return redirect("/")
+
+    # Load selected references
+    references = []
+    for rid in reference_ids:
+        ref = get_reference(rid)
+        if ref:
+            references.append(ref)
+
+    # Build content in BibTeX format
+    content = ""
+    for ref in references:
+        content += ref.to_bibtex()
+        content += "\n\n"
+
+    # Create a response with the content as a downloadable bib file
+    return Response(
+        content,
+        mimetype="text/plain",
+        headers={
+            "Content-Disposition": "attachment; filename=references.bib"
+        }
+    )
+
+
 # testausta varten oleva reitti
 if test_env:
     @app.route("/reset_db")

@@ -77,6 +77,8 @@ Reference app
               <button type="submit">Delete</button>
             </form>
             <button class="btn btn-primary" onClick="copyToClipboard(`{{ reference.to_bibtex() }}`); event.stopPropagation();">Copy bibtex</button>
+
+            <input type="checkbox" name="reference_id" value="{{ reference.id }}" form="export_selected_form">
           </div>
         </div>
       </li>
@@ -91,17 +93,21 @@ Reference app
 <form action="/export" method="get">
   <button type="submit">Export all to bibtex</button>
 </form>
+<form id="export_selected_form" action="/export_selected" method="get" onsubmit="return selectedReferences(event)">
+  <button type="submit">Export selected to bibtex</button>
+</form>
+
 
 <script>
   function validateReferenceType() {
     const select = document.getElementById('reference_type');
     const selectedValue = select.value;
-    
+
     if (!selectedValue) {
       alert('Please select a reference type before creating a new reference.');
       return false;
     }
-    
+
     document.getElementById('selected_reference_type').value = selectedValue;
     return true;
   }
@@ -114,6 +120,16 @@ Reference app
     const pane = document.getElementById('detail-pane');
     if (!pane) return;
     pane.textContent = bibtex;
+  }
+
+  function selectedReferences(event) {
+    const checked = document.querySelectorAll('input[name="reference_id"]:checked');
+    if (checked.length === 0) {
+      alert('Please select at least one reference to export.');
+      event.preventDefault();
+      return false;
+    }
+    return true;
   }
 </script>
 
