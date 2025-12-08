@@ -29,7 +29,7 @@ Create a new reference
   <div class="field_boxes">
   {% for field in required_fields %}
   <label for="{{ field }}">{{ field.capitalize() }}:</label>
-  <input type="text" class="fields" name="{{ field }}" id="{{ field }}" required>
+  <input type="text" name="{{ field }}" id="{{ field }}" value="{{ prefill.get(field, '') }}" required>
   <br>
   {% endfor %}
   </div>
@@ -40,7 +40,7 @@ Create a new reference
   <div class="field_boxes">
   {% for field in optional_fields %}
   <label for="{{ field }}">{{ field.capitalize() }}:</label>
-  <input type="text" class="fields" name="{{ field }}" id="{{ field }}">
+  <input type="text" name="{{ field }}" id="{{ field }}" value="{{ prefill.get(field, '') }}">
   <br>
   {% endfor %}
   </div>

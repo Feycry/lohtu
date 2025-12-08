@@ -62,9 +62,27 @@ h3 {
 }
 
 .create_new_ref {
-  position: absolute;
-  top: 85px;
-  left: 130px;
+  margin-top: 10px;
+}
+
+.doi_lookup_section {
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.doi_lookup_section form {
+  margin: 0;
+}
+
+.doi_lookup_section input[type="text"] {
+  width: 400px;
+}
+
+.separator {
+  text-align: center;
+  margin: 20px 0;
 }
 
 .field_boxes {
