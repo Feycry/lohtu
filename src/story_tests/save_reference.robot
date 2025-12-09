@@ -83,7 +83,7 @@ Canceling changes works
     Click Button  Edit
     Title Should Be  Edit reference
     Input Text  name:year  2025
-    Click Link  Cancel
+    Click Button  Cancel
     Page Should Not Contain  Year: 2025
 
 Creating inproceedings without author (required)
