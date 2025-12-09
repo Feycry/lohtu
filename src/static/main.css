@@ -84,11 +84,6 @@ h3 {
   width: 400px;
 }
 
-.separator {
-  text-align: center;
-  margin: 20px 0;
-}
-
 .field_boxes {
   background: #d6d6d6;
   border: 1px solid #e5e5e5;
@@ -127,10 +122,11 @@ h3 {
 }
 
 .frontpage-references .actions {
-  margin-top: auto;
+  order: -1;
   display: flex;
   gap: 8px;
   align-items: center;
+  margin-bottom: 12px;
 }
 
 .frontpage-references .actions form {
@@ -168,6 +164,8 @@ h3 {
   word-break: break-word;
   color: #3a3a3a;
   line-height: 1.35;
+  position: sticky;
+  top: 20px;
 }
 
 .float-left-child {
