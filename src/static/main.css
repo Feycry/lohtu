@@ -165,3 +165,12 @@ h3 {
   color: #3a3a3a;
   line-height: 1.35;
 }
+
+.float-left-child {
+  float: left
+}
+
+
+.inline-block-child {
+  display: inline-block;
+}

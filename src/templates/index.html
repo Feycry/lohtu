@@ -30,29 +30,32 @@ Reference app
 
 <h3>Or</h3>
 
-<p>
-  <label for="reference_type" class="ref_type">Reference type:</label><br />
-  <select name="reference_type" id="reference_type" class="ref_selection" required>
-    <option value="">choose</option>
-    <option value="article">@article</option>
-    <option value="book">@book</option>
-    <option value="booklet">@booklet</option>
-    <option value="conference">@conference</option>
-    <option value="inbook">@inbook</option>
-    <option value="incollection">@incollection</option>
-    <option value="inproceedings">@inproceedings</option>
-    <option value="manual">@manual</option>
-    <option value="mastersthesis">@mastersthesis</option>
-    <option value="phdthesis">@phdthesis</option>
-    <option value="proceedings">@proceedings</option>
-    <option value="techreport">@techreport</option>
-    <option value="unpublished">@unpublished</option>
-  </select>
-</p>
-<form action="/new_reference" method="get" onsubmit="return validateReferenceType()" class="create_new_ref">
-  <input type="hidden" name="reference_type" id="selected_reference_type">
-  <button type="submit" class="add_button">Create new reference</button>
-</form>
+<div class='parent'>
+  <div class='child inline-block-child'><p>
+    <label for="reference_type" class="ref_type">Reference type:</label><br />
+    <select name="reference_type" id="reference_type" class="ref_selection" required>
+      <option value="">choose</option>
+      <option value="article">@article</option>
+      <option value="book">@book</option>
+      <option value="booklet">@booklet</option>
+      <option value="conference">@conference</option>
+      <option value="inbook">@inbook</option>
+      <option value="incollection">@incollection</option>
+      <option value="inproceedings">@inproceedings</option>
+      <option value="manual">@manual</option>
+      <option value="mastersthesis">@mastersthesis</option>
+      <option value="phdthesis">@phdthesis</option>
+      <option value="proceedings">@proceedings</option>
+      <option value="techreport">@techreport</option>
+      <option value="unpublished">@unpublished</option>
+    </select>
+  </p></div>
+  <div class='child inline-block-child'>
+    <form action="/new_reference" method="get" onsubmit="return validateReferenceType()" class="create_new_ref">
+      <input type="hidden" name="reference_type" id="selected_reference_type">
+      <button type="submit" class="add_button">Create new reference</button>
+    </form></div>
+  </div>
 
 <div class="layout">
   <ul>
@@ -101,13 +104,15 @@ Reference app
   </div>
 </div>
 
-<form action="/export" method="get">
-  <button type="submit">Export all to bibtex</button>
-</form>
-<form id="export_selected_form" action="/export_selected" method="get" onsubmit="return selectedReferences(event)">
-  <button type="submit">Export selected to bibtex</button>
-</form>
-
+<div class='parent'>
+  <div class='child inline-block-child'>
+    <form action="/export" method="get">
+      <button type="submit">Export all to bibtex</button>
+    </form></div>
+    <div class='child inline-block-child'>  <form id="export_selected_form" action="/export_selected" method="get" onsubmit="return selectedReferences(event)">
+      <button type="submit">Export selected to bibtex</button>
+    </form>
+</div>
 
 <script>
   function validateReferenceType() {

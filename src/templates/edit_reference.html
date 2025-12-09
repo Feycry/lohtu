@@ -21,7 +21,7 @@ Edit reference
       </ul>
     {% endif %}
   {% endwith %}
-  
+
   {% if required_fields %}
   <h3>Required Fields</h3>
   {% for field in required_fields %}
@@ -30,7 +30,7 @@ Edit reference
   <br>
   {% endfor %}
   {% endif %}
-  
+
   {% if optional_fields %}
   <h3>Optional Fields</h3>
   {% for field in optional_fields %}
@@ -39,11 +39,11 @@ Edit reference
   <br>
   {% endfor %}
   {% endif %}
-  
+
   <button type="submit">
     Update
   </button>
-  <a href="/">Cancel</a>
+  <button href="/">Cancel</a>
 </form>
 
 {% endblock %}
