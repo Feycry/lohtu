@@ -69,18 +69,26 @@ h3 {
   margin-top: 10px;
 }
 
-.doi_lookup_section {
+.create_reference_section {
+  display: flex;
+  align-items: center;
   background-color: #f0f0f0;
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 5px;
 }
 
-.doi_lookup_section form {
+.create_reference_section > div:first-child,
+.create_reference_section > div:last-child {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.create_reference_section form {
   margin: 0;
 }
 
-.doi_lookup_section input[type="text"] {
+.create_reference_section input[type="text"] {
   width: 400px;
 }
 
