@@ -3,6 +3,10 @@ label {
   width: 110px;
   text-align: right;}
 
+h1 {
+  color: rgb(81, 81, 81);
+}
+
 h2 {
   color: rgb(81, 81, 81);
 }
