@@ -6,7 +6,7 @@ Reference app
 
 {% block body %}
 
-<h1>Lohtu for Outi, App made with Love</h1>
+<h1 style="text-align: center;">Lohtu for Outi, App made with Love</h1>
 
 <form method="get" action="/" style="margin-bottom: 1em;" class="search wrapper">
   <input type="text" name="q" placeholder="Search" value="{{ q|default('') }}" class="search_input">
@@ -18,8 +18,8 @@ Reference app
   <p>Results</p>
 {% endif %}
 
-<div class="create_reference_section">
-  <div>
+<div class="create_reference_container">
+  <div class="create_reference_section">
     <p>Enter a DOI to automatically create a reference with pre-filled fields:</p>
     <form action="/lookup_doi" method="post">
       <input type="text" name="doi" id="doi_lookup" placeholder="e.g., 10.1145/3366423.3380203">
@@ -27,11 +27,11 @@ Reference app
     </form>
   </div>
 
-  <div style="font-size: 1.2em; font-weight: bold; color: rgb(81, 81, 81); padding: 0 40px; flex-shrink: 0;">OR</div>
+  <div class="create_reference_divider">OR</div>
 
-  <div>
+  <div class="create_reference_section">
     <div style="margin-bottom: 5px;">Choose a type and click the button to create a reference manually:</div>
-    <div style="display: flex; gap: 10px; align-items: center;">
+    <div style="display: flex; gap: 10px; align-items: center; justify-content: center;">
       <select name="reference_type" id="reference_type" class="ref_selection" required>
         <option value="">choose type</option>
         <option value="article">@article</option>

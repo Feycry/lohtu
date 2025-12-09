@@ -69,19 +69,29 @@ h3 {
   margin-top: 10px;
 }
 
-.create_reference_section {
+.create_reference_container {
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #f0f0f0;
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 5px;
+  gap: 20px;
 }
 
-.create_reference_section > div:first-child,
-.create_reference_section > div:last-child {
-  flex: 1 1 0;
-  min-width: 0;
+.create_reference_section {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.create_reference_divider {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: rgb(81, 81, 81);
+  padding: 20px;
+  flex-shrink: 0;
 }
 
 .create_reference_section form {
