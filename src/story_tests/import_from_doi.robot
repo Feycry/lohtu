@@ -9,18 +9,18 @@ Importing reference from DOI populates required fields and creates reference
     Go To  ${HOME_URL}
     Title Should Be  Reference app
     
-    Input Text  id:doi_lookup    10.1007/s13187-020-01751-z
+    Input Text  id:doi_lookup    10.1002/j.1538-7305.1948.tb01338.x
     Click Button  Import from DOI
     
     Title Should Be  Create a new reference
     
-    Textfield Value Should Be  name:author     Busse, Clara and August, Ella
-    Textfield Value Should Be  name:title      How to Write and Publish a Research Paper for a Peer-Reviewed Journal
-    Textfield Value Should Be  name:journal    Journal of Cancer Education
-    Textfield Value Should Be  name:year       2020
+    Textfield Value Should Be  name:author     Shannon, C. E.
+    Textfield Value Should Be  name:title      A Mathematical Theory of Communication
+    Textfield Value Should Be  name:journal    Bell System Technical Journal
+    Textfield Value Should Be  name:year       1948
     
     Click Button  Create
     
     Title Should Be  Reference app
-    Page Should Contain  How to Write and Publish a Research Paper for a Peer-Reviewed Journal
-    Page Should Contain  Busse, Clara and August, Ella
+    Page Should Contain  A Mathematical Theory of Communication
+    Page Should Contain  Shannon, C. E.
