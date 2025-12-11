@@ -59,7 +59,7 @@ class TestRepositorySearchAndUpdate(unittest.TestCase):
                 author=refs[0].author,
                 title=refs[0].title,
                 booktitle=getattr(refs[0], "booktitle", None),
-                year="2025",  # change
+                year="2025",
                 url=getattr(refs[0], "url", None),
                 doi=getattr(refs[0], "doi", None),
                 editor=getattr(refs[0], "editor", None),

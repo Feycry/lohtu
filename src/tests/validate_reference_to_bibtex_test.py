@@ -5,7 +5,6 @@ from entities.reference import Reference
 class TestReferenceToBibtex(unittest.TestCase):
 
     def test_to_bibtex_formats_reference_correctly(self):
-        #Arrange
         reference = Reference(
             reference_id=1,
             ref_type="article",
@@ -28,5 +27,4 @@ class TestReferenceToBibtex(unittest.TestCase):
             "}"
         )
 
-        #Act and Assert
         self.assertEqual(reference.to_bibtex(), expected_bibtex)

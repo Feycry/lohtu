@@ -34,7 +34,6 @@ class TestReferenceValidation(unittest.TestCase):
         with self.assertRaises(TypeError):
             validate_reference(None)
 
-    # Required field validations for different types
     def test_inproceedings_missing_author(self):
         with self.assertRaises(UserInputError) as cm:
             validate_required_fields("inproceedings", {
