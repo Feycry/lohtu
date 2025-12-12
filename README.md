@@ -4,6 +4,9 @@
 # lohtu
 Ohjelmistotuotantotokurssin projekti
 
+# Loppuraportti
+https://www.overleaf.com/read/wnbvtxgythwy#c404da
+
 # Definition of Done
 - Unit tests are written and passing
 - There are no known bugs
